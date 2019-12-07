@@ -141,7 +141,7 @@ namespace CryptoNote
 
         assert(emission > 0 && emission <= 8 * sizeof(uint64_t));
 
-        uint64_t baseReward = (m_moneySupply - alreadyGeneratedCoins) >> emission;
+        uint64_t baseReward = 1000; // 10 HASH per block
 
         size_t blockGrantedFullRewardZone = blockGrantedFullRewardZoneByBlockVersion(blockMajorVersion);
         medianSize = std::max(medianSize, blockGrantedFullRewardZone);
