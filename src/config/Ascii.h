@@ -5,7 +5,7 @@
 
 #pragma once
 
-const std::string asciiArt = "
+const std::string asciiArt = 
 "     _   _     _________  _________ \n"
 "  ( ) ( )    \__   __/  \__   __/   \n"
 " _| |_| |_      ) (        ) (      \n"
