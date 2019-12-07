@@ -24,11 +24,10 @@
 #define CN_DARK_PAGE_SIZE 524288
 #define CN_DARK_SCRATCHPAD 524288
 #define CN_DARK_ITERATIONS 262144
-
-// Standard CryptoNight Turtle
-#define CN_TURTLE_PAGE_SIZE 262144
-#define CN_TURTLE_SCRATCHPAD 262144
-#define CN_TURTLE_ITERATIONS 131072
+// replace CN TRTL with CN HT as we wont need to go back 
+#define CN_TURTLE_PAGE_SIZE 32768
+#define CN_TURTLE_SCRATCHPAD 32768
+#define CN_TURTLE_ITERATIONS 16384
 
 // CryptoNight Soft Shell Definitions
 #define CN_SOFT_SHELL_MEMORY 262144 // This defines the lowest memory utilization for our curve
