@@ -57,7 +57,7 @@ namespace CryptoNote
         const uint64_t EMISSION_SPEED_FACTOR_V2_HEIGHT = 700000;
         // end of obsolete code
         const char GENESIS_COINBASE_TX_HEX[] =
-            "0x";
+            "010a01ff000188f3b501029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210142694232c5b04151d9e4c27d31ec7a68ea568b19488cfcb422659a07a0e44dd5";
 
         static_assert(
             sizeof(GENESIS_COINBASE_TX_HEX) / sizeof(*GENESIS_COINBASE_TX_HEX) != 1,
