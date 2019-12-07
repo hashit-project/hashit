@@ -3,6 +3,7 @@
 // Copyright (c) 2018-2019, The TurtleCoin Developers
 // Copyright (c) 2018-2019, The DeroGold Association
 //
+// Copyright (c) 2019-2020, The Hash It Developers
 // Please see the included LICENSE file for more information.
 
 #pragma once
@@ -19,12 +20,12 @@ namespace CryptoNote
 {
     namespace parameters
     {
-        const uint64_t DIFFICULTY_TARGET = 10; // seconds
+        const uint64_t DIFFICULTY_TARGET = 300; // seconds
 
-        const uint64_t DIFFICULTY_TARGET_V2 = 20; // seconds
+        const uint64_t DIFFICULTY_TARGET_V2 = 300; // seconds
 
         /* Height to swap to DIFFICULTY_TARGET_V2 */
-        const uint64_t DIFFICULTY_TARGET_V2_HEIGHT = 700000;
+        const uint64_t DIFFICULTY_TARGET_V2_HEIGHT = 0;
 
         const uint32_t CRYPTONOTE_MAX_BLOCK_NUMBER = 500000000;
 
@@ -32,15 +33,16 @@ namespace CryptoNote
 
         const size_t CRYPTONOTE_MAX_TX_SIZE = 1000000000;
 
-        const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 8411;
+        const uint64_t CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0xbcb5d172;
 
-        const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW = 120;
+        const uint32_t CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW = 20;
 
         const uint64_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT = 6 * DIFFICULTY_TARGET_V2;
 
         const size_t BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW = 11;
+	  
 
-        // MONEY_SUPPLY - total number coins to be generated
+        // following is obsolete due to new emmision system.
         const uint64_t MONEY_SUPPLY = UINT64_C(10000000000000000);
 
         const unsigned EMISSION_SPEED_FACTOR = 23;
@@ -53,16 +55,16 @@ namespace CryptoNote
 
         /* Height to swap to EMISSION_SPEED_FACTOR_V2 */
         const uint64_t EMISSION_SPEED_FACTOR_V2_HEIGHT = 700000;
-
+        // end of obsolete code
         const char GENESIS_COINBASE_TX_HEX[] =
-            "010a01ff000188f3b501029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd088071210142694232c5b04151d9e4c27d31ec7a68ea568b19488cfcb422659a07a0e44dd5";
+            "0x";
 
         static_assert(
             sizeof(GENESIS_COINBASE_TX_HEX) / sizeof(*GENESIS_COINBASE_TX_HEX) != 1,
             "GENESIS_COINBASE_TX_HEX must not be empty.");
 
         /* This is the unix timestamp of the first "mined" block (technically block 2, not the genesis block)
-           You can get this value by doing "print_block 2" in TurtleCoind. It is used to know what timestamp
+           You can get this value by doing "print_block 2" in hashitd. It is used to know what timestamp
            to import from when the block height cannot be found in the node or the node is offline. */
         const uint64_t GENESIS_BLOCK_TIMESTAMP = 1545261161;
 
@@ -80,7 +82,7 @@ namespace CryptoNote
 
         const size_t CRYPTONOTE_DISPLAY_DECIMAL_POINT = 2;
 
-        const uint64_t MINIMUM_FEE = UINT64_C(10);
+        const uint64_t MINIMUM_FEE = UINT64_C(5);
 
         /* Fee adjusting V1 1470000 */
         const uint64_t MINIMUM_FEE_V1 = UINT64_C(1000000);
@@ -91,18 +93,18 @@ namespace CryptoNote
         /* This section defines our minimum and maximum mixin counts required for transactions */
         const uint64_t MINIMUM_MIXIN_V0 = 0;
 
-        const uint64_t MAXIMUM_MIXIN_V0 = 7;
+        const uint64_t MAXIMUM_MIXIN_V0 = 10;
 
         const uint64_t MINIMUM_MIXIN_V1 = 0;
 
-        const uint64_t MAXIMUM_MIXIN_V1 = 3;
+        const uint64_t MAXIMUM_MIXIN_V1 = 5;
 
         /* The heights to activate the mixin limits at */
-        const uint32_t MIXIN_LIMITS_V1_HEIGHT = 1470000;
+        const uint32_t MIXIN_LIMITS_V1_HEIGHT = 0;
 
         /* The mixin to use by default with zedwallet and turtle-service */
         /* DEFAULT_MIXIN_V0 is the mixin used before MIXIN_LIMITS_V1_HEIGHT is started */
-        const uint64_t DEFAULT_MIXIN_V0 = 3;
+        const uint64_t DEFAULT_MIXIN_V0 = 5;
 
         const uint64_t DEFAULT_MIXIN_V1 = MAXIMUM_MIXIN_V1;
 
@@ -129,15 +131,11 @@ namespace CryptoNote
         const uint64_t MAX_EXTRA_SIZE_V3 = 512;
 
 	const uint64_t MAX_EXTRA_SIZE_V3_HEIGHT = 1470000;
+        const uint64_t TRANSACTION_SIGNATURE_COUNT_VALIDATION_HEIGHT = 0;
 
-        /* For new projects forked from this code base, the values immediately below
-           should be changed to 0 to prevent issues with transaction processing
-           and other possible unexpected behavior */
-        const uint64_t TRANSACTION_SIGNATURE_COUNT_VALIDATION_HEIGHT = 700000;
+        const uint64_t BLOCK_BLOB_SHUFFLE_CHECK_HEIGHT = 0;
 
-        const uint64_t BLOCK_BLOB_SHUFFLE_CHECK_HEIGHT = 1800000;
-
-        const uint64_t TRANSACTION_INPUT_BLOCKTIME_VALIDATION_HEIGHT = 1600000;
+        const uint64_t TRANSACTION_INPUT_BLOCKTIME_VALIDATION_HEIGHT = 0;
 
         /* This describes how many blocks of "wiggle" room transactions have regarding
            when the outputs can be spent based on a reasonable belief that the outputs
@@ -176,11 +174,7 @@ namespace CryptoNote
         static_assert(UPGRADE_VOTING_WINDOW > 1, "Bad UPGRADE_VOTING_WINDOW");
 
         /* Block heights we are going to have hard forks at */
-        const uint64_t FORK_HEIGHTS[] = {
-            700000, // 0
-            1470000, // 1
-            2100000, // 2
-        };
+        const uint64_t FORK_HEIGHTS[] = {};
 
         /* MAKE SURE TO UPDATE THIS VALUE WITH EVERY MAJOR RELEASE BEFORE A FORK */
         const uint64_t SOFTWARE_SUPPORTED_FORK_INDEX = 1;
@@ -211,7 +205,7 @@ namespace CryptoNote
         const char MINER_CONFIG_FILE_NAME[] = "miner_conf.json";
     } // namespace parameters
 
-    const char CRYPTONOTE_NAME[] = "DeroGold";
+    const char CRYPTONOTE_NAME[] = "HashIt";
 
     const uint8_t TRANSACTION_VERSION_1 = 1;
 
@@ -256,16 +250,16 @@ namespace CryptoNote
 
     // P2P Network Configuration Section - This defines our current P2P network version
     // and the minimum version for communication between nodes
-    const uint8_t P2P_CURRENT_VERSION = 3;
+    const uint8_t P2P_CURRENT_VERSION = 0;
 
-    const uint8_t P2P_MINIMUM_VERSION = 2;
+    const uint8_t P2P_MINIMUM_VERSION = 0;
 
     // This defines the minimum P2P version required for lite blocks propogation
     const uint8_t P2P_LITE_BLOCKS_PROPOGATION_VERSION = 0;
 
     // This defines the number of versions ahead we must see peers before we start displaying
     // warning messages that we need to upgrade our software.
-    const uint8_t P2P_UPGRADE_WINDOW = 2;
+    const uint8_t P2P_UPGRADE_WINDOW = 1;
 
     const size_t P2P_CONNECTION_MAX_WRITE_BUFFER_SIZE = 32 * 1024 * 1024; // 32 MB
     const uint32_t P2P_DEFAULT_CONNECTIONS_COUNT = 12;
@@ -293,14 +287,9 @@ namespace CryptoNote
     const std::string LICENSE_URL = "https://github.com/derogold/derogold/blob/master/LICENSE";
 
     const static boost::uuids::uuid CRYPTONOTE_NETWORK = {
-        {0x20, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6c, 0x6c, 0x20, 0x67, 0x65, 0x6e, 0x74, 0x6f, 0x6f, 0x20}};
+        {0x10, 0x01, 0x6e, 0x73, 0x75, 0x61, 0x6c, 0x6d, 0x20, 0x67, 0x65, 0x6a, 0x74, 0x6f, 0x7f, 0x20}};
 
     const char* const SEED_NODES[] = {
-        "195.154.81.135:12169", // bob bie
-        "5.9.65.105:42069", // Pluto
-        "5.172.219.174:42069", // sniperviperman 
-        "91.239.237.54:42069", // Leo Cuvée CZ
-        "46.214.70.196:42069", // derogold4ever.online
-        "130.185.202.159:42069" // SolFly
+        ""
     };
 } // namespace CryptoNote
