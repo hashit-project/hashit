@@ -1,3 +1,4 @@
+https://avatars2.githubusercontent.com/u/58629392?s=400&u=43effa925329c27a14075bdb5610bbf24164ff22&v=4
 ### Installing
 
 We offer binary images of the latest releases here: https://github.com/hashit-project/hashit/releases/
