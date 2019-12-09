@@ -2,7 +2,7 @@
 // Copyright (c) 2014-2018, The Monero Project
 // Copyright (c) 2018-2019, The TurtleCoin Developers
 // Copyright (c) 2018-2019, The DeroGold Association
-//
+// Copyright (c) 2019-2020, The Hash It Project
 // Copyright (c) 2019-2020, The Hash It Developers
 // Please see the included LICENSE file for more information.
 
@@ -238,11 +238,11 @@ namespace CryptoNote
 
     const size_t COMMAND_RPC_GET_BLOCKS_FAST_MAX_COUNT = 1000;
 
-    const int P2P_DEFAULT_PORT = 42069;
+    const int P2P_DEFAULT_PORT = 4789;
 
-    const int RPC_DEFAULT_PORT = 6969;
+    const int RPC_DEFAULT_PORT = 7890;
 
-    const int SERVICE_DEFAULT_PORT = 1337;
+    const int SERVICE_DEFAULT_PORT = 1239;
 
     const size_t P2P_LOCAL_WHITE_PEERLIST_LIMIT = 1000;
 
@@ -250,7 +250,7 @@ namespace CryptoNote
 
     // P2P Network Configuration Section - This defines our current P2P network version
     // and the minimum version for communication between nodes
-    const uint8_t P2P_CURRENT_VERSION = 0;
+    const uint8_t P2P_CURRENT_VERSION = 1;
 
     const uint8_t P2P_MINIMUM_VERSION = 0;
 
@@ -290,6 +290,6 @@ namespace CryptoNote
         {0x10, 0x01, 0x6e, 0x73, 0x75, 0x61, 0x6c, 0x6d, 0x20, 0x67, 0x65, 0x6a, 0x74, 0x6f, 0x7f, 0x20}};
 
     const char* const SEED_NODES[] = {
-        ""
+        "54.36.163.174:4789"
     };
 } // namespace CryptoNote
